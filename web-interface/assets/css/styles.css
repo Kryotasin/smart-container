@@ -1,0 +1,52 @@
+/* =================================
+    |   SKILL SECTION    |
+==================================== */
+.progress {
+    position: relative;
+    height: 10px;
+    overflow: visible;
+    border-radius: 0;
+  }
+  
+  .bar-title {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .progress-bar {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    color: inherit;
+    transition: width 1.8s linear;
+  }
+  .progress-bar span {
+    position: absolute;
+    right: -15px;
+    top: -30px;
+    font-size: 14px;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 4px;
+    line-height: 1;
+    font-weight: bold;
+  }
+  .progress-bar span:after {
+    content: " ";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    margin-left: -4px;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+  
+#warning {
+    color: red;
+    visibility: hidden;
+}
