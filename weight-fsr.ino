@@ -16,6 +16,7 @@ long fsrForce;
 
 void setup(void) {
 //Serial.begin(9600); // We'll send debugging information via the Serial monitor
+Particle.variable("weight", fsrForce);
 }
 
 
@@ -25,7 +26,7 @@ Serial.print("Analog reading = ");
 Serial.println(fsrReading);
 
 
-// analog voltage reading ranges from about 0 to 1023 which maps to 0V to 3.3V (= 3300mV) 
+// analog voltage reading ranges from about 0 to 1023 which maps to 0V to 5V (= 5000mV) 
 fsrVoltage = map(fsrReading, 0, 4095, 0, 3300);
 Serial.print("Voltage reading in mV = ");
 Serial.println(fsrVoltage);
@@ -34,7 +35,7 @@ Serial.println(fsrVoltage);
 if (fsrVoltage == 0) { 
     Serial.println("No pressure");
 } else {
-// The voltage = Vcc * R / (R + FSR) where R = 10K and Vcc = 3.3V
+// The voltage = Vcc * R / (R + FSR) where R = 10K and Vcc = 5V
 // so FSR = ((Vcc - V) * R) / V 
 fsrResistance = 3300 - fsrVoltage; 
 fsrResistance *= 10000;
@@ -44,7 +45,7 @@ fsrResistance /= fsrVoltage;
 Serial.print("FSR resistance in ohms = ");
 Serial.println(fsrResistance);
 
-// fsrVoltage is in millivolts so 3.3V = 3300mV // 10K resistor
+// fsrVoltage is in millivolts so 5V = 5000mV // 10K resistor
 
 fsrConductance = 1000000; // we measure in micromhos so 
 fsrConductance /= fsrResistance;
